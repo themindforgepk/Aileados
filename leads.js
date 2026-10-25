@@ -828,7 +828,7 @@ function confirmDelete() {
  */
 async function loadSampleData() {
     try {
-        const res = await fetch('data/sample-leads.json');
+        const res = await fetch('sample-leads.json');
         if (!res.ok) throw new Error('Failed to fetch sample data');
         const samples = await res.json();
 
