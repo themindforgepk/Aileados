@@ -1,0 +1,77 @@
+[
+  {
+    "id": "lead_sample_001",
+    "businessName": "Sunrise Dental Clinic",
+    "industry": "Healthcare",
+    "country": "United States",
+    "city": "Austin",
+    "website": "",
+    "websiteStatus": "none",
+    "email": "info@sunrisedental.example",
+    "phone": "+1 512-555-0142",
+    "socialLinks": {
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    },
+    "reviews": 48,
+    "rating": 4.6,
+    "notes": "No website found. High Google reviews. Strong opportunity.",
+    "score": 85,
+    "status": "new",
+    "createdAt": "2026-10-20T09:15:00.000Z",
+    "updatedAt": "2026-10-20T09:15:00.000Z",
+    "followUpDate": null,
+    "auditResult": null
+  },
+  {
+    "id": "lead_sample_002",
+    "businessName": "Peak Performance Gym",
+    "industry": "Fitness",
+    "country": "Canada",
+    "city": "Toronto",
+    "website": "https://peakperformance.example",
+    "websiteStatus": "outdated",
+    "email": "hello@peakperformance.example",
+    "phone": "+1 416-555-0198",
+    "socialLinks": {
+      "facebook": "https://facebook.com/peakgym",
+      "instagram": "https://instagram.com/peakgym",
+      "linkedin": ""
+    },
+    "reviews": 112,
+    "rating": 4.8,
+    "notes": "Website exists but looks outdated (2019 design). No online booking.",
+    "score": 62,
+    "status": "contacted",
+    "createdAt": "2026-10-18T14:30:00.000Z",
+    "updatedAt": "2026-10-22T11:00:00.000Z",
+    "followUpDate": "2026-10-26",
+    "auditResult": null
+  },
+  {
+    "id": "lead_sample_003",
+    "businessName": "Green Leaf Landscaping",
+    "industry": "Home Services",
+    "country": "United Kingdom",
+    "city": "Manchester",
+    "website": "https://greenleaflandscaping.example",
+    "websiteStatus": "outdated",
+    "email": "contact@greenleaf.example",
+    "phone": "+44 161 555 0177",
+    "socialLinks": {
+      "facebook": "",
+      "instagram": "https://instagram.com/greenleafland",
+      "linkedin": ""
+    },
+    "reviews": 27,
+    "rating": 4.3,
+    "notes": "Mobile site is broken. No clear CTA. Good local presence.",
+    "score": 55,
+    "status": "new",
+    "createdAt": "2026-10-22T08:45:00.000Z",
+    "updatedAt": "2026-10-22T08:45:00.000Z",
+    "followUpDate": null,
+    "auditResult": null
+  }
+]

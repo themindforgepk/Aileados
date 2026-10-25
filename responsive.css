@@ -1,0 +1,247 @@
+/* ============================================
+   AI Lead Hunter OS - Responsive Styles
+   Mobile-first adjustments
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop / Laptop */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .secondary-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    .search-box {
+        min-width: 180px;
+    }
+
+    .topbar {
+        padding: 0 var(--space-lg);
+    }
+
+    .content-wrapper {
+        padding: var(--space-lg);
+    }
+}
+
+/* Mobile & Small Tablet */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+    }
+
+    .topbar {
+        padding: 0 var(--space-md);
+        height: 64px;
+    }
+
+    .page-title h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .page-title p {
+        display: none;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .topbar-right .btn span {
+        display: none;
+    }
+
+    .topbar-right .btn {
+        padding: 0.625rem;
+    }
+
+    .content-wrapper {
+        padding: var(--space-md);
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .metric-card {
+        padding: var(--space-md);
+    }
+
+    .secondary-metrics {
+        gap: var(--space-md);
+    }
+
+    .conversion-item {
+        grid-template-columns: 70px 1fr 36px;
+        gap: var(--space-sm);
+    }
+
+    .card-header {
+        padding: var(--space-md);
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Overlay when sidebar is open */
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-base), visibility var(--transition-base);
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .toast-container {
+        bottom: var(--space-md);
+        right: var(--space-md);
+        left: var(--space-md);
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-value {
+        font-size: var(--font-size-xl);
+    }
+
+    .metric-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-title {
+        font-size: var(--font-size-base);
+    }
+
+    .user-details {
+        display: none;
+    }
+
+    .sidebar-footer {
+        justify-content: center;
+    }
+
+    .user-info {
+        justify-content: center;
+    }
+}
+
+/* Print styles (optional) */
+@media print {
+    .sidebar,
+    .topbar,
+    .btn {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Phase 2 – Leads responsive */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; }
+
+    .leads-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .leads-toolbar-left,
+    .leads-toolbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .leads-search {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        max-height: 95vh;
+    }
+
+    .modal-body {
+        padding: var(--space-lg);
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: var(--space-md) var(--space-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+}

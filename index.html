@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lead Hunter OS</title>
+    <meta name="description" content="AI-powered lead generation system for web development agencies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">🎯</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Lead Hunter</span>
+                        <span class="logo-subtitle">OS</span>
+                    </div>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#leads" class="nav-link" data-section="leads">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span>Leads</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#discovery" class="nav-link" data-section="discovery">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                            <span>Discovery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#scoring" class="nav-link" data-section="scoring">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20V10M18 20V4M6 20v-4"/>
+                            </svg>
+                            <span>Scoring</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#audit" class="nav-link" data-section="audit">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                            </svg>
+                            <span>Website Audit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#outreach" class="nav-link" data-section="outreach">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                            <span>Outreach</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pipeline" class="nav-link" data-section="pipeline">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                            <span>Pipeline</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" class="nav-link" data-section="settings">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div class="user-details">
+                        <span class="user-name">Agency Owner</span>
+                        <span class="user-role">Pro Plan</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h1 id="pageTitle">Dashboard</h1>
+                        <p id="pageSubtitle">Overview of your lead generation performance</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Search leads..." autocomplete="off">
+                    </div>
+                    <button class="btn btn-primary" id="addLeadBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <span>Add Lead</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <!-- Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon total">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">Total Leads</span>
+                                <span class="metric-value" id="metricTotalLeads">0</span>
+                                <span class="metric-change positive" id="metricTotalChange">+0 this week</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon hot">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">Hot Leads</span>
+                                <span class="metric-value" id="metricHotLeads">0</span>
+                                <span class="metric-change" id="metricHotChange">Score 71-100</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon medium">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">Medium Leads</span>
+                                <span class="metric-value" id="metricMediumLeads">0</span>
+                                <span class="metric-change" id="metricMediumChange">Score 41-70</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon followup">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">Follow-ups Due</span>
+                                <span class="metric-value" id="metricFollowUps">0</span>
+                                <span class="metric-change warning" id="metricFollowUpChange">Needs attention</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Metrics -->
+                    <div class="secondary-metrics">
+                        <div class="conversion-card">
+                            <h3>Conversion Tracking</h3>
+                            <div class="conversion-stats">
+                                <div class="conversion-item">
+                                    <span class="conversion-label">Contacted</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill" id="conversionContacted" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="conversionContactedValue">0%</span>
+                                </div>
+                                <div class="conversion-item">
+                                    <span class="conversion-label">Replied</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill replied" id="conversionReplied" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="conversionRepliedValue">0%</span>
+                                </div>
+                                <div class="conversion-item">
+                                    <span class="conversion-label">Won</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill won" id="conversionWon" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="conversionWonValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-summary">
+                            <h3>Pipeline Overview</h3>
+                            <div class="pipeline-stages" id="pipelineStages">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scoring Intelligence Row -->
+                    <div class="secondary-metrics scoring-row">
+                        <div class="conversion-card">
+                            <div class="card-header-inline">
+                                <h3>Score Distribution</h3>
+                                <span class="avg-score-pill">Avg <strong id="metricAvgScore">0</strong></span>
+                            </div>
+                            <div class="conversion-stats">
+                                <div class="conversion-item">
+                                    <span class="conversion-label">🔥 Hot</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill hot-fill" id="distHotBar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="distHotValue">0</span>
+                                </div>
+                                <div class="conversion-item">
+                                    <span class="conversion-label">⚡ Medium</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill med-fill" id="distMedBar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="distMedValue">0</span>
+                                </div>
+                                <div class="conversion-item">
+                                    <span class="conversion-label">🧊 Low</span>
+                                    <div class="conversion-bar">
+                                        <div class="conversion-fill low-fill" id="distLowBar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="conversion-value" id="distLowValue">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-summary">
+                            <h3>Top Opportunities</h3>
+                            <div class="top-opportunities" id="topOpportunities">
+                                <div class="text-muted" style="padding:1rem 0;font-size:0.875rem;">No opportunities yet.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Leads -->
+                    <div class="card recent-leads-card">
+                        <div class="card-header">
+                            <h3>Recent Leads</h3>
+                            <a href="#leads" class="btn btn-ghost btn-sm">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table" id="recentLeadsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Business</th>
+                                            <th>Industry</th>
+                                            <th>Score</th>
+                                            <th>Status</th>
+                                            <th>Added</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentLeadsBody">
+                                        <!-- Populated by JS -->
+                                        <tr class="empty-state">
+                                            <td colspan="6">
+                                                <div class="empty-message">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                    <p>No leads yet. Add your first lead to get started.</p>
+                                                    <button class="btn btn-primary btn-sm" onclick="document.getElementById('addLeadBtn').click()">
+                                                        Add First Lead
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Leads Section -->
+                <section id="leads-section" class="content-section">
+                    <!-- Toolbar -->
+                    <div class="leads-toolbar">
+                        <div class="leads-toolbar-left">
+                            <div class="search-box leads-search">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                                <input type="text" id="leadsSearch" placeholder="Search by name, city, email..." autocomplete="off">
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="toggleFiltersBtn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>
+                                </svg>
+                                Filters
+                            </button>
+                        </div>
+                        <div class="leads-toolbar-right">
+                            <span class="leads-count" id="leadsCount">0 leads</span>
+                            <button class="btn btn-secondary btn-sm" id="loadSampleBtn" title="Load demo data">
+                                Load Sample
+                            </button>
+                            <button class="btn btn-primary btn-sm" id="addLeadBtnLeads">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                Add Lead
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters Panel -->
+                    <div class="filters-panel" id="filtersPanel">
+                        <div class="filters-grid">
+                            <div class="filter-group">
+                                <label>Industry</label>
+                                <select id="filterIndustry">
+                                    <option value="">All Industries</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Country</label>
+                                <select id="filterCountry">
+                                    <option value="">All Countries</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Status</label>
+                                <select id="filterStatus">
+                                    <option value="">All Statuses</option>
+                                    <option value="new">New</option>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="replied">Replied</option>
+                                    <option value="meeting">Meeting</option>
+                                    <option value="proposal">Proposal Sent</option>
+                                    <option value="won">Won</option>
+                                    <option value="lost">Lost</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Score Range</label>
+                                <select id="filterScore">
+                                    <option value="">All Scores</option>
+                                    <option value="hot">Hot (71-100)</option>
+                                    <option value="medium">Medium (41-70)</option>
+                                    <option value="low">Low (0-40)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Website Status</label>
+                                <select id="filterWebsite">
+                                    <option value="">All</option>
+                                    <option value="none">No Website</option>
+                                    <option value="outdated">Outdated</option>
+                                    <option value="good">Good</option>
+                                </select>
+                            </div>
+                            <div class="filter-group filter-actions">
+                                <button class="btn btn-ghost btn-sm" id="clearFiltersBtn">Clear Filters</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Table View -->
+                    <div class="card leads-table-card desktop-only">
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table" id="leadsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Business</th>
+                                            <th>Industry</th>
+                                            <th>Location</th>
+                                            <th>Website</th>
+                                            <th>Score</th>
+                                            <th>Status</th>
+                                            <th>Follow-up</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leadsTableBody">
+                                        <!-- Populated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card View -->
+                    <div class="leads-cards mobile-only" id="leadsCards">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+
+                <!-- Discovery Section -->
+                <section id="discovery-section" class="content-section">
+                    <div class="card" style="margin-bottom: 1.25rem;">
+                        <div class="card-header">
+                            <h3>Lead Discovery</h3>
+                            <span id="discoveryProviderBadge" class="api-status-badge pending">Demo mode</span>
+                        </div>
+                        <div class="card-body" style="padding: 1.25rem;">
+                            <form id="discoveryForm" class="discovery-form">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="discoveryIndustry">Industry / Niche</label>
+                                        <input type="text" id="discoveryIndustry" placeholder="e.g. Dental Clinics" list="industryList">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="discoveryCountry">Country</label>
+                                        <input type="text" id="discoveryCountry" placeholder="e.g. Australia">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="discoveryCity">City</label>
+                                        <input type="text" id="discoveryCity" placeholder="e.g. Melbourne">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="discoveryKeywords">Keywords</label>
+                                        <input type="text" id="discoveryKeywords" placeholder="Optional extra terms">
+                                    </div>
+                                </div>
+                                <div class="discovery-form-actions">
+                                    <button type="submit" class="btn btn-primary" id="discoverySearchBtn">Search businesses</button>
+                                    <span class="text-muted" style="font-size:0.8rem;">Without API keys, demo results are generated from your query.</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="leads-toolbar">
+                        <div class="leads-toolbar-left">
+                            <span class="leads-count" id="discoveryResultCount">0 results</span>
+                        </div>
+                        <div class="leads-toolbar-right">
+                            <button type="button" class="btn btn-secondary btn-sm" id="discoveryImportSelectedBtn">Import selected</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="discoveryImportAllBtn">Import all new</button>
+                        </div>
+                    </div>
+
+                    <div id="discoveryLoading" class="discovery-loading hidden">Searching…</div>
+                    <div id="discoveryEmpty" class="discovery-empty hidden">
+                        <p class="text-muted">No results. Try a different niche or city.</p>
+                    </div>
+
+                    <div class="card discovery-table-card">
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table" id="discoveryTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:40px;"><input type="checkbox" id="discoverySelectAll" title="Select all"></th>
+                                            <th>Business</th>
+                                            <th>Website</th>
+                                            <th>Phone</th>
+                                            <th>Rating</th>
+                                            <th>Reviews</th>
+                                            <th>Location</th>
+                                            <th>Website Status</th>
+                                            <th>Opportunity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="discoveryResultsBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="scoring-section" class="content-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Scoring Engine</h3>
+                        </div>
+                        <div class="card-body" style="padding: 1.5rem;">
+                            <p class="text-muted" style="margin-bottom: 1.25rem; font-size: 0.9rem;">
+                                Every lead is scored 0–100 using transparent, weighted rules. Scores update automatically when lead data changes.
+                            </p>
+                            <div class="scoring-rules-grid" id="scoringRulesDisplay">
+                                <!-- Filled by optional future enhancement; static summary below -->
+                            </div>
+                            <div class="rules-summary">
+                                <div class="rule-group">
+                                    <h4>Website Opportunity</h4>
+                                    <ul>
+                                        <li><span class="points-pos">+40</span> No website</li>
+                                        <li><span class="points-pos">+30</span> Outdated website</li>
+                                        <li><span class="points-zero">+0</span> Good modern website</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-group">
+                                    <h4>Conversion Gaps</h4>
+                                    <ul>
+                                        <li><span class="points-pos">+15</span> No booking system</li>
+                                        <li><span class="points-pos">+10</span> No contact form</li>
+                                        <li><span class="points-pos">+10</span> No clear CTA</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-group">
+                                    <h4>Business Value</h4>
+                                    <ul>
+                                        <li><span class="points-pos">+10</span> Premium industry</li>
+                                        <li><span class="points-pos">+10</span> 50+ reviews</li>
+                                        <li><span class="points-pos">+15</span> 100+ reviews</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-group">
+                                    <h4>Activity & Penalties</h4>
+                                    <ul>
+                                        <li><span class="points-pos">+5</span> Active social media</li>
+                                        <li><span class="points-pos">+5</span> Complete Google profile</li>
+                                        <li><span class="points-neg">−10</span> Low rating (&lt; 3.5)</li>
+                                        <li><span class="points-neg">−10</span> Recently redesigned</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-muted" style="margin-top: 1.25rem; font-size: 0.8rem;">
+                                Categories: <strong>Hot 71–100</strong> · <strong>Medium 41–70</strong> · <strong>Low 0–40</strong>. Max score capped at 100.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="audit-section" class="content-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Website Audit System</h3>
+                        </div>
+                        <div class="card-body" style="padding: 1.5rem;">
+                            <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.9rem;">
+                                Run audits from any lead’s detail view. Results feed the scoring engine and surface conversion gaps you can sell against.
+                            </p>
+                            <div class="rules-summary">
+                                <div class="rule-group">
+                                    <h4>What We Check</h4>
+                                    <ul>
+                                        <li>SSL / HTTPS</li>
+                                        <li>Mobile experience</li>
+                                        <li>Design quality</li>
+                                        <li>Loading speed</li>
+                                        <li>Booking system</li>
+                                        <li>Contact form & CTAs</li>
+                                        <li>Social proof</li>
+                                        <li>Basic SEO</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-group">
+                                    <h4>How to Run</h4>
+                                    <ul>
+                                        <li>Open a lead → View</li>
+                                        <li>Click <strong>Run Audit</strong></li>
+                                        <li>Review problems & opportunity score</li>
+                                        <li>Lead score updates automatically</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-group">
+                                    <h4>API Upgrade Path</h4>
+                                    <ul>
+                                        <li>Google PageSpeed Insights</li>
+                                        <li>Lighthouse categories</li>
+                                        <li>AI Vision (design critique)</li>
+                                        <li>Keys go in <code>api-config.js</code></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-muted" style="margin-top: 1.25rem; font-size: 0.8rem;">
+                                Without API keys the engine uses structured heuristics based on website status and lead signals. Connect PageSpeed for live metrics.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="outreach-section" class="content-section">
+                    <div class="outreach-layout">
+                        <div class="card outreach-controls">
+                            <div class="card-header">
+                                <h3>Generate Outreach</h3>
+                            </div>
+                            <div class="card-body" style="padding: 1.25rem;">
+                                <div class="form-group" style="margin-bottom: 1rem;">
+                                    <label for="outreachLeadSelect">Select Lead</label>
+                                    <select id="outreachLeadSelect">
+                                        <option value="">Choose a lead…</option>
+                                    </select>
+                                </div>
+                                <div class="outreach-actions">
+                                    <button type="button" class="btn btn-primary btn-sm" data-gen="email">Email</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-gen="whatsapp">WhatsApp</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-gen="linkedin">LinkedIn</button>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label for="followUpStage">Follow-up stage</label>
+                                    <div class="followup-row">
+                                        <select id="followUpStage">
+                                            <option value="day1">Day 1 — Initial</option>
+                                            <option value="day3" selected>Day 3 — Reminder</option>
+                                            <option value="day7">Day 7 — Value</option>
+                                            <option value="day14">Day 14 — Final</option>
+                                        </select>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-gen="followup">Follow-up</button>
+                                    </div>
+                                </div>
+                                <p class="text-muted" style="margin-top: 1rem; font-size: 0.75rem;">
+                                    Messages use lead score, website status, and audit findings. Replace [Your name] before sending.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="outreach-output" id="outreachOutput">
+                            <div class="card">
+                                <div class="card-body" style="padding: 2rem; text-align: center;">
+                                    <p class="text-muted">Select a lead and generate a message to see output here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pipeline-section" class="content-section">
+                    <div class="pipeline-toolbar">
+                        <span class="leads-count" id="pipelineCount">0 leads in pipeline</span>
+                        <button type="button" class="btn btn-ghost btn-sm" id="pipelineRefreshBtn">Refresh</button>
+                    </div>
+                    <div class="pipeline-board" id="pipelineBoard">
+                        <!-- Columns populated by JS -->
+                    </div>
+                </section>
+
+                <section id="settings-section" class="content-section">
+                    <div class="settings-grid">
+                        <div class="card">
+                            <div class="card-header"><h3>Agency Profile</h3></div>
+                            <div class="card-body" style="padding: 1.25rem;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="settingAgencyName">Agency name</label>
+                                        <input type="text" id="settingAgencyName" placeholder="My Web Agency">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingYourName">Your name</label>
+                                        <input type="text" id="settingYourName" placeholder="Alex">
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="settingSignature">Email signature</label>
+                                        <textarea id="settingSignature" rows="3" placeholder="Best,&#10;Alex&#10;My Web Agency"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingTone">Default outreach tone</label>
+                                        <select id="settingTone">
+                                            <option value="consultative">Consultative</option>
+                                            <option value="direct">Direct</option>
+                                            <option value="friendly">Friendly</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingCountry">Default country</label>
+                                        <input type="text" id="settingCountry" placeholder="United States">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 1rem;">
+                                    <button type="button" class="btn btn-primary btn-sm" id="settingsSaveBtn">Save settings</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header"><h3>API Status</h3></div>
+                            <div class="card-body" style="padding: 1.25rem;">
+                                <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1rem;">
+                                    Keys are configured in <code>js/api-config.js</code>. Never commit real keys to git.
+                                </p>
+                                <div class="api-status-list">
+                                    <div class="api-status-row">
+                                        <span>AI (Outreach / Analysis)</span>
+                                        <span id="apiStatusAI" class="api-status-badge pending">Not configured</span>
+                                    </div>
+                                    <div class="api-status-row">
+                                        <span>Google PageSpeed</span>
+                                        <span id="apiStatusPageSpeed" class="api-status-badge pending">Not configured</span>
+                                    </div>
+                                    <div class="api-status-row">
+                                        <span>Database backend</span>
+                                        <span id="apiStatusDB" class="api-status-badge pending">LocalStorage only</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header"><h3>Data Management</h3></div>
+                            <div class="card-body" style="padding: 1.25rem;">
+                                <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+                                    <strong id="settingsLeadCount">0</strong> leads in local storage
+                                </p>
+                                <div class="data-actions">
+                                    <button type="button" class="btn btn-secondary btn-sm" id="exportCsvBtn">Export CSV</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" id="exportJsonBtn">Backup JSON</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" id="importJsonBtn">Import JSON</button>
+                                    <button type="button" class="btn btn-danger btn-sm" id="clearDataBtn">Clear all data</button>
+                                </div>
+                                <label class="checkbox-row" style="margin-top: 1rem;">
+                                    <input type="checkbox" id="importMergeCheck">
+                                    <span>Merge on import (keep existing leads)</span>
+                                </label>
+                                <input type="file" id="importFileInput" accept=".json,application/json" hidden>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Add / Edit Lead Modal -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="leadModalTitle">Add New Lead</h2>
+                <button class="modal-close" id="leadModalClose" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="leadForm" class="modal-body" novalidate>
+                <input type="hidden" id="leadId">
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="businessName">Business Name <span class="required">*</span></label>
+                        <input type="text" id="businessName" placeholder="e.g. Sunrise Dental Clinic" required>
+                        <span class="form-error" id="errorBusinessName"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry / Niche</label>
+                        <input type="text" id="industry" placeholder="e.g. Healthcare, Fitness, Legal" list="industryList">
+                        <datalist id="industryList">
+                            <option value="Healthcare">
+                            <option value="Fitness">
+                            <option value="Home Services">
+                            <option value="Legal">
+                            <option value="Restaurant">
+                            <option value="Real Estate">
+                            <option value="E-commerce">
+                            <option value="Professional Services">
+                            <option value="Beauty & Spa">
+                            <option value="Automotive">
+                            <option value="Education">
+                            <option value="Other">
+                        </datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="websiteStatus">Website Status</label>
+                        <select id="websiteStatus">
+                            <option value="none">No Website</option>
+                            <option value="outdated">Outdated</option>
+                            <option value="good">Good</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" placeholder="e.g. United States">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" placeholder="e.g. Austin">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" placeholder="https://example.com">
+                        <span class="form-error" id="errorWebsite"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="hello@example.com">
+                        <span class="form-error" id="errorEmail"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="+1 555-0123">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Google Rating</label>
+                        <input type="number" id="rating" min="0" max="5" step="0.1" placeholder="4.5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviews">Number of Reviews</label>
+                        <input type="number" id="reviews" min="0" step="1" placeholder="48">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Lead Status</label>
+                        <select id="status">
+                            <option value="new">New Lead</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="replied">Replied</option>
+                            <option value="meeting">Meeting</option>
+                            <option value="proposal">Proposal Sent</option>
+                            <option value="won">Won</option>
+                            <option value="lost">Lost</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="followUpDate">Follow-up Date</label>
+                        <input type="date" id="followUpDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="socialFacebook">Facebook</label>
+                        <input type="url" id="socialFacebook" placeholder="https://facebook.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="socialInstagram">Instagram</label>
+                        <input type="url" id="socialInstagram" placeholder="https://instagram.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="socialLinkedin">LinkedIn</label>
+                        <input type="url" id="socialLinkedin" placeholder="https://linkedin.com/...">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" rows="3" placeholder="Any observations, pain points, or ideas..."></textarea>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="leadModalCancel">Cancel</button>
+                <button type="submit" form="leadForm" class="btn btn-primary" id="leadFormSubmit">Save Lead</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Lead Modal -->
+    <div class="modal-overlay" id="viewLeadModal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 id="viewLeadTitle">Lead Details</h2>
+                <button class="modal-close" id="viewLeadClose" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="viewLeadBody">
+                <!-- Populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="viewLeadCloseBtn">Close</button>
+                <button type="button" class="btn btn-primary" id="viewLeadEditBtn">Edit Lead</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2>Delete Lead</h2>
+                <button class="modal-close" id="deleteModalClose" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="deleteLeadName"></strong>?</p>
+                <p class="text-muted" style="margin-top: 0.5rem; font-size: 0.875rem;">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="deleteModalCancel">Cancel</button>
+                <button type="button" class="btn btn-danger" id="deleteConfirmBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Clear Data Confirmation -->
+    <div class="modal-overlay" id="clearDataModal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2>Clear all data</h2>
+                <button class="modal-close" id="clearDataClose" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This will permanently delete all leads from this browser.</p>
+                <label class="checkbox-row" style="margin-top: 1rem;">
+                    <input type="checkbox" id="clearIncludeSettings">
+                    <span>Also reset settings</span>
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="clearDataCancel">Cancel</button>
+                <button type="button" class="btn btn-danger" id="clearDataConfirm">Delete everything</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts (ES Modules) -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
